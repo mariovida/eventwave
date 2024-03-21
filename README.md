@@ -10,3 +10,4 @@ EventWave is a web application for managing events, registrations, and attendee 
 - <b>Registration Management:</b> Manage event registrations, track attendees, and send confirmation emails.
 - <b>User Authentication:</b> Secure user authentication system for event organizers and attendees.
 - <b>Customizable Templates:</b> Customize email templates, registration forms, and event pages to match your branding.
+- <b>Real-time Analytics:</b> Track event performance with real-time analytics and insights.
