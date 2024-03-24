@@ -13,3 +13,5 @@ EventWave is a web application for managing events, registrations, and attendee 
 - <b>Real-time Analytics:</b> Track event performance with real-time analytics and insights.
 
 ## Usage
+
+- <b>Create an Account:</b> Sign up as an event organizer.
