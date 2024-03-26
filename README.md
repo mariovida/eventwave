@@ -15,3 +15,4 @@ EventWave is a web application for managing events, registrations, and attendee 
 ## Usage
 
 - <b>Create an Account:</b> Sign up as an event organizer.
+- <b>Create an Event:</b> As an organizer, create a new event by providing event details and customization options.
