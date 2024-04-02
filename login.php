@@ -9,6 +9,7 @@
     $error_message = false;
     if(isset($_SESSION['error'])) {
         $error_message = true;
+        $email_set = $_SESSION['error'];
         unset($_SESSION['error']);
     }
 	include './db_connect/connect.php';
@@ -35,7 +36,7 @@
                 $error_message_verification = true;
             }
         } else {
-            $_SESSION['error'] = $userName;
+            $_SESSION['error'] = $user;
             header('Location: ./login');
             $login_success = false;
             $error_message = true;
@@ -69,7 +70,8 @@
                         </div>
                     <?php } ?>
                     <form action="" method="POST">
-                        <input type="email" id="email" name="email" placeholder="Email address" required>
+                        <input type="email" id="email" name="email" placeholder="Email address" <?php if ($error_message) {
+                            echo "value='$email_set'"; } ?> required>
                         <input type="password" id="password" name="password" placeholder="Password" required>
                         <input type="submit" value="Log in" name="login">
                     </form>
