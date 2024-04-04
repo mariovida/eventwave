@@ -9,18 +9,22 @@
 
     if ($dbc) {
         $user = $_POST['email'];
-        $sql = "SELECT email FROM users WHERE email = ?";
-        $stmt = mysqli_stmt_init($dbc);
-        if (mysqli_stmt_prepare($stmt, $sql)) {
-            mysqli_stmt_bind_param($stmt, 's', $user);
-            mysqli_stmt_execute($stmt);
-            mysqli_stmt_store_result($stmt);
+        $sqlSelect = "SELECT id, email FROM users WHERE email = ?";
+        $stmtSelect = mysqli_stmt_init($dbc);
+        if (mysqli_stmt_prepare($stmtSelect, $sqlSelect)) {
+            mysqli_stmt_bind_param($stmtSelect, 's', $user);
+            mysqli_stmt_execute($stmtSelect);
+            mysqli_stmt_store_result($stmtSelect);
         }
-        mysqli_stmt_bind_result($stmt, $userMail);
-        mysqli_stmt_fetch($stmt);
+        mysqli_stmt_bind_result($stmtSelect, $userId, $userMail);
+        mysqli_stmt_fetch($stmtSelect);
 
-        if(mysqli_stmt_num_rows($stmt) > 0) {
+        if(mysqli_stmt_num_rows($stmtSelect) > 0) {
             $emailFound = 1;
+            $randomBytes = random_bytes(18);
+            $userToken = bin2hex($randomBytes);
+            $queryInsert = "UPDATE users SET password_request_token = '$userToken' WHERE id = '$userId'";
+            $resultInsert = mysqli_query($dbc,$queryInsert) or die('Error querying database.');
         } else {
             $emailFound = 0;
         }
@@ -40,14 +44,14 @@
         $emailFromName = 'EventWave';
         $emailSubject = "Password reset link";
         $emailBody = file_get_contents('./templates/password-reset.html');
+        $emailBody = str_replace('{{reset_token}}', $userToken, $emailBody);
     
         $mail = new PHPMailer();
         $mail->isSMTP();
-        $mail->SMTPDebug = 4; // 0 = off (for production use) - 1 = client messages - 2 = client and server messages
+        $mail->SMTPDebug = 0; // 0 = off (for production use) - 1 = client messages - 2 = client and server messages
         $mail->Host = $_ENV['SMTP_HOST'];
         $mail->Port = 587;
-        $mail->SMTPSecure = 'none';
-        $mail->SMTPAutoTLS = false;
+        $mail->SMTPAutoTLS = true;
         $mail->SMTPAuth = true;
         $mail->Username = $_ENV['SMTP_USERNAME'];
         $mail->Password = $_ENV['SMTP_PASSWORD'];
@@ -68,6 +72,7 @@
             header("Location: ./forgot-password-confirm");
         } else {
             echo 'Email sending failed: ' . $mail->ErrorInfo;
+            header("Location: ./forgot-password");
         }
     } else {
         $_SESSION['error'] = true;
