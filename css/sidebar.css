@@ -1,0 +1,64 @@
+nav {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 260px;
+  height: 100vh;
+  padding: 20px 0;
+  background-color: var(--vz-purple-light);
+  border-right: 1px solid var(--vz-gray-400);
+  z-index: 99;
+}
+nav > div {
+  width: 220px;
+  margin: 0 auto;
+}
+nav .nav-logo {
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid var(--vz-purple);
+  cursor: default;
+}
+nav .nav-logo img {
+  width: 70px;
+  margin-right: 12px;
+}
+nav .nav-logo p {
+  font-family: ff-secondary;
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  margin: 0;
+  color: var(--vz-purple-dark);
+}
+nav .nav-links {
+  position: relative;
+  height: calc(100% - 131px);
+}
+nav a {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  height: 36px;
+  font-weight: 600;
+  line-height: 36px;
+  text-decoration: none;
+  color: var(--vz-gray-700);
+  margin-bottom: 8px;
+  padding: 0 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+nav a img {
+  width: 22px;
+  height: 22px;
+  margin-right: 14px;
+}
+nav .nav-links a:last-of-type {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 0;
+}
+nav a:hover {
+  color: var(--vz-gray-900);
+}

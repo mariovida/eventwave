@@ -17,10 +17,11 @@
     <title>EventWave</title>
 </head>
 <body>
-    <button id="logout-btn">ODJAVA</button>
-    <section class='contact'>
+    <?php include 'inc/sidebar.php'; ?>
+
+    <div class="content">
         <div class='wrapper'>
-            <form action="./send-mail.php" method="POST"> <!-- add path to send-mail.php -->
+            <!--<form action="./send-mail.php" method="POST">
                 <label for="email">Email Address:</label><br>
                 <input type="email" id="email" name="email" required><br><br>
 
@@ -32,9 +33,9 @@
                 <div id="editor"></div>
 
                 <input type="submit" value="Send Email">
-            </form>
+            </form>-->
         </div>
-    </section>
+    </div>
 
     <script>
         unlayer.init({
@@ -50,10 +51,6 @@
                 document.getElementById('unlayerHTML').value = html;
             })
         })
-
-        document.getElementById("logout-btn").addEventListener("click", function() {
-            window.location.href = "./logout";
-        });
     </script>
 </body>
 </html>
