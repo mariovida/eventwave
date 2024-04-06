@@ -41,6 +41,9 @@ body::-webkit-scrollbar-thumb {
   max-width: 1440px; /* 1600px */
   width: 96%;
   margin: 0 auto;
+}
+.wrapper-content {
+  min-height: 200px;
   padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 5px 22px 0 rgba(0, 0, 0, 0.04), 0 0 0 0.5px rgba(0, 0, 0, 0.03);
@@ -52,6 +55,13 @@ h2 {
   font-size: 42px;
   line-height: 48px;
   font-weight: 700;
+}
+h3 {
+  font-family: ff-secondary;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--vz-gray-900);
+  margin-bottom: 32px;
 }
 
 /* COMPONENTS */

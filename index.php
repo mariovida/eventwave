@@ -21,6 +21,13 @@
 
     <div class="content">
         <div class='wrapper'>
+            <?php if($_SESSION['name']) { ?>
+                <h3>Welcome, <?php echo $_SESSION['name']; ?></h3>
+            <?php } else { ?>
+                <h3>Welcome</h3>
+            <?php } ?>
+            
+            <div class="wrapper-content"></div>
             <!--<form action="./send-mail.php" method="POST">
                 <label for="email">Email Address:</label><br>
                 <input type="email" id="email" name="email" required><br><br>
