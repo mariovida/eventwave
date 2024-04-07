@@ -1,5 +1,5 @@
 <?php
-    $APP_URL = "http://localhost/events";
+    $APP_URL = "https://mario-dev.eu/construction/events";
 ?>
 <nav>
     <div class="nav-logo d-flex align-items-center">

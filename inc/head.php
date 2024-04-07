@@ -1,5 +1,5 @@
 <?php
-    $APP_URL = "http://localhost/events";
+    $APP_URL = "https://mario-dev.eu/construction/events";
     defined('meta') or header('Location: '. $APP_URL);
 ?>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
