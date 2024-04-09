@@ -21,11 +21,13 @@
 
     <div class="content">
         <div class='wrapper'>
-            <?php if($_SESSION['name']) { ?>
-                <h3>Welcome, <?php echo $_SESSION['name']; ?></h3>
-            <?php } else { ?>
-                <h3>Welcome</h3>
-            <?php } ?>
+            <div class="d-flex justify-content-between align-items-center title-header">
+                <?php if($_SESSION['name']) { ?>
+                    <h3>Welcome, <?php echo $_SESSION['name']; ?></h3>
+                <?php } else { ?>
+                    <h3>Welcome</h3>
+                <?php } ?>
+            </div>
             
             <div class="wrapper-content"></div>
             <!--<form action="./send-mail.php" method="POST">

@@ -35,7 +35,16 @@ nav .nav-links {
   position: relative;
   height: calc(100% - 131px);
 }
-nav a {
+nav .nav-links .card {
+  height: 100%;
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  padding-left: 12px;
+}
+nav a,
+nav button {
+  position: relative;
   width: 100%;
   display: inline-flex;
   align-items: center;
@@ -44,17 +53,31 @@ nav a {
   line-height: 36px;
   text-decoration: none;
   color: var(--vz-gray-700);
+  background-color: transparent;
   margin-bottom: 8px;
   padding: 0 8px;
+  border: 0;
   cursor: pointer;
   transition: 0.2s;
 }
-nav a img {
+nav a img,
+nav button img {
   width: 22px;
   height: 22px;
   margin-right: 14px;
 }
-nav .nav-links a:last-of-type {
+nav button img.chevron {
+  position: absolute;
+  right: 0;
+  width: 17px;
+  height: 17px;
+  margin-right: 0;
+  transition: 0.3s;
+}
+nav button[aria-expanded="true"] img.chevron {
+  transform: rotate(90deg);
+}
+nav .nav-links a#logout-btn {
   position: absolute;
   bottom: 0;
   margin-bottom: 0;
