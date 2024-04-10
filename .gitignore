@@ -5,3 +5,5 @@
 /templates
 /vendor
 /.htaccess
+send-mail.php
+404.php
