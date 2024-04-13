@@ -55,7 +55,7 @@ nav button {
   text-decoration: none;
   color: var(--vz-gray-700);
   background-color: transparent;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   padding: 0 8px;
   border: 0;
   cursor: pointer;
@@ -79,7 +79,9 @@ nav button[aria-expanded="true"] img.chevron {
   transform: rotate(90deg);
 }
 nav .nav-links .card a {
+  height: 28px;
   font-size: 15px;
+  font-weight: 500;
 }
 nav .nav-links a#logout-btn {
   position: absolute;
