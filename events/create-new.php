@@ -19,10 +19,15 @@
 
     <div class="content">
         <div class='wrapper'>
+            <div class="back-btn">
+                <a href="./"><?php include '../assets/icons/arrow-left.svg'; ?>All events</a>
+            </div>
             <div class="d-flex justify-content-between align-items-center title-header">
                 <h3>Create new event</h3>
             </div>
-            <div class="wrapper-content"></div>
+            <div class="wrapper-content">
+                <h5>Event information</h5>
+            </div>
         </div>
     </div>
 </body>

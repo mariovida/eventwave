@@ -23,7 +23,8 @@
                 <h3>Contacts</h3>
                 <a href="./create-new">Create new</a>
             </div>
-            <div class="wrapper-content"></div>
+            <div class="wrapper-content">
+            </div>
         </div>
     </div>
 </body>

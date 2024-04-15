@@ -64,8 +64,30 @@ h3 {
   color: var(--vz-gray-900);
   margin-bottom: 0;
 }
+h5 {
+  font-family: ff-secondary;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--vz-gray-900);
+}
 
 /* COMPONENTS */
+.back-btn {
+  margin-bottom: 24px;
+}
+.back-btn a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--vz-gray-900);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 18px;
+  text-decoration: none;
+}
+.back-btn a svg {
+  stroke-width: 2px;
+}
 .title-header {
   margin-bottom: 32px;
 }
