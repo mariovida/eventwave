@@ -1,0 +1,6 @@
+.filepond .filepond--credits {
+  display: none;
+}
+.filepond--drop-label {
+  height: 100% !important;
+}

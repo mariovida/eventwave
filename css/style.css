@@ -3,9 +3,11 @@
 
 /* BLOCKS */
 @import "sidebar.css";
+@import "filepond.css";
 
 /* PAGES */
 @import "auth.css";
+@import "events.css";
 
 * {
   margin: 0;
