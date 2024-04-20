@@ -65,7 +65,7 @@ if ($dbc && isset($_POST['create-event'])) {
                 <h5>Event information</h5>
                 
                 <div class="form-row">
-                    <input type="text" name="event_name" placeholder="Event Name" required>
+                    <input type="text" name="event_name" placeholder="Event name" required>
                     <input type="text" name="event_organizer" placeholder="Organizer" required>
                 </div>
                 <div class="form-row">
