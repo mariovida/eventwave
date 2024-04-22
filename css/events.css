@@ -1,6 +1,7 @@
 .event-header-image {
   height: 160px;
   margin-bottom: 32px !important;
+  cursor: pointer;
 }
 .events-create-new .form-row {
   width: 100%;
@@ -10,17 +11,35 @@
   margin-bottom: 20px;
 }
 .events-create-new .form-row input,
-.events-create-new .form-row textarea {
+.events-create-new .form-row textarea,
+.events-create-new .form-row select {
   flex-grow: 1;
   flex-basis: 0;
   font-size: 16px;
   line-height: 16px;
   padding: 12px 12px;
+  color: var(--vz-gray-800);
   border: 1px solid var(--vz-gray-400);
   border-radius: 5px;
+  cursor: pointer;
 }
 .events-create-new .form-row input:focus,
-.events-create-new .form-row textarea:focus {
+.events-create-new .form-row textarea:focus,
+.events-create-new .form-row select:focus {
   outline: none;
   border: 1px solid var(--vz-gray-500);
+}
+.events-create-new #event-form input[type="submit"] {
+  display: inline-flex;
+  line-height: 40px;
+  text-decoration: none;
+  padding: 0 32px;
+  color: var(--vz-white);
+  background-color: var(--vz-purple);
+  border: 0;
+  border-radius: 5px;
+  transition: 0.2s;
+}
+.events-create-new #event-form input[type="submit"]:hover {
+  background-color: var(--vz-purple-dark);
 }

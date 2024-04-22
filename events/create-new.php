@@ -44,6 +44,7 @@ if ($dbc && isset($_POST['create-event'])) {
     <script src="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.min.js"></script>
     <script src="https://unpkg.com/filepond-plugin-image-exif-orientation/dist/filepond-plugin-image-exif-orientation.min.js"></script>
     <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
     <script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
     <title>New event | EventWave</title>
 </head>
@@ -63,15 +64,93 @@ if ($dbc && isset($_POST['create-event'])) {
                 <input type="hidden" name="event_image" class="event-image">
                 <input type="file" class="filepond event-header-image" name="filepond">
                 <h5>Event information</h5>
-                
+
+                <h5 style="font-size:16px;font-weight:500;margin-bottom:16px">Event type</h5>
+                <div class="form-row mb-4">
+                    <div>
+                        <input type="radio" id="public" name="event_type" value="public" required>
+                        <label for="public">Public</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="private" name="event_type" value="private" required>
+                        <label for="private">Private</label>
+                    </div>
+                </div>
                 <div class="form-row">
                     <input type="text" name="event_name" placeholder="Event name" required>
-                    <input type="text" name="event_organizer" placeholder="Organizer" required>
+                    <select name="event_category" required>
+                        <option value="">Event category</option>
+                        <option value="workshop">Workshop</option>
+                        <option value="seminar">Seminar</option>
+                        <option value="concert">Concert</option>
+                        <option value="conference">Conference</option>
+                    </select>
                 </div>
                 <div class="form-row">
                     <textarea name="event_description" placeholder="Event Description" rows="5" required></textarea>
                 </div>
-                <input type="submit" value="Create event" name="create-event">
+                <div class="form-row">
+                    <input type="text" name="event_organizer" placeholder="Organizer" required>
+                    <select name="event_timezone" id="event_timezone" required>
+                        <?php
+                        $timezones = timezone_identifiers_list();
+                        foreach($timezones as $timezone) {
+                            echo "<option value=\"$timezone\">$timezone</option>";
+                        }
+                        ?>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <input type="text" id="start_date" name="start_date" placeholder="Start date" onfocus="(this.type='datetime-local')" required>
+                    <input type="text" id="end_date" name="end_date" placeholder="End date" onfocus="(this.type='datetime-local')" required>
+                </div>
+
+                <h5 class="mt-5">Registration and attendance information</h5>
+                <div class="form-row">
+                    <input type="text" name="event_location" placeholder="Location name" required>
+                    <input type="text" name="event_address" placeholder="Address" required>
+                </div>
+                <div class="form-row">
+                    <input type="text" name="event_city" placeholder="City" required>
+                    <input type="text" name="event_country" placeholder="Country" required>
+                </div>
+
+                <h5 class="mt-5">Tickets</h5>
+                <button type="button" class="btn-2" data-bs-toggle="modal" data-bs-target="#addTicketModal">
+                    Add ticket
+                </button>
+                <!-- Add ticket modal -->
+                <div class="modal fade" id="addTicketModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addTicketModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content add-ticket-modal">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="addTicketModalLabel">Add ticket</h5>
+                        </div>
+                        <div class="modal-body">
+                            <h5 style="font-size:16px;font-weight:500;margin-bottom:16px">Ticket type</h5>
+                            <div class="form-row mb-4">
+                                <div>
+                                    <input type="radio" id="free" name="ticket_type" value="free" required>
+                                    <label for="public">Free ticket</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="paid" name="ticket_type" value="paid" required>
+                                    <label for="private">Paid ticket</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer justify-content-start">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-primary">Add ticket</button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-center justify-content-end gap-4">
+                    <a href="./" class="discard-btn">Discard</a>
+                    <input type="submit" value="Create event" name="create-event">
+                </div>
             </form>
         </div>
     </div>
@@ -79,11 +158,23 @@ if ($dbc && isset($_POST['create-event'])) {
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        const startDateTimeInput = document.getElementById('start_date');
+        const endDateTimeInput = document.getElementById('end_date');
+
+        startDateTimeInput.addEventListener('change', function() {
+            endDateTimeInput.min = startDateTimeInput.value;
+        });
+
+        endDateTimeInput.addEventListener('change', function() {
+            startDateTimeInput.max = endDateTimeInput.value;
+        });
+
         FilePond.registerPlugin(
             FilePondPluginFileEncode,
             FilePondPluginFileValidateSize,
             FilePondPluginImageExifOrientation,
-            FilePondPluginImagePreview
+            FilePondPluginImagePreview,
+            FilePondPluginFileValidateType
         );
         const pond = FilePond.create(document.querySelector('input.filepond'), {
             server: {
@@ -94,7 +185,31 @@ if ($dbc && isset($_POST['create-event'])) {
                         document.querySelector('input.event-image').value = res.key;
                     }
                 }
-            }
+            },
+            maxFiles: 1,
+            maxFileSize: '1MB',
+            imageCropAspectRatio: '1:1',
+            acceptedFileTypes: ['image/jpeg', 'image/png'],
+            labelIdle: 'Drag & Drop your image or <span class="filepond--label-action">Browse</span>',
+            labelFileWaitingForSize: 'Processing...',
+            labelFileSizeNotAvailable: 'File size is not available',
+            labelFileLoading: 'Loading...',
+            labelFileLoadError: 'Error while loading file',
+            labelFileProcessing: 'Uploading...',
+            labelFileProcessingComplete: 'Upload complete',
+            labelFileProcessingAborted: 'Upload cancelled',
+            labelFileProcessingError: 'Error during upload',
+            labelFileProcessingRevertError: 'Error while reverting upload',
+            labelTapToCancel: 'tap to cancel',
+            labelTapToRetry: 'tap to retry',
+            labelTapToUndo: 'tap to undo',
+            labelButtonRemoveItem: 'Remove',
+            labelButtonAbortItemLoad: 'Abort',
+            labelButtonRetryItemLoad: 'Retry',
+            labelButtonAbortItemProcessing: 'Cancel',
+            labelButtonUndoItemProcessing: 'Undo',
+            labelButtonRetryItemProcessing: 'Retry',
+            labelButtonProcessItem: 'Upload'
         });
     });
 </script>
