@@ -2,3 +2,27 @@
 .add-ticket-modal .modal-footer {
   border: 0;
 }*/
+.add-ticket-modal .discard-btn,
+.add-ticket-modal .submit-btn {
+  display: inline-flex;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 40px;
+  letter-spacing: 0.5px;
+  padding: 0 24px;
+  color: var(--vz-gray-700);
+  background-color: transparent;
+  border: 1px solid var(--vz-gray-700);
+  border-radius: 5px;
+  transition: 0.2s;
+}
+.add-ticket-modal .submit-btn {
+  margin-left: 12px;
+  color: var(--vz-white);
+  background-color: var(--vz-purple);
+  border: 1px solid var(--vz-purple);
+}
+.add-ticket-modal .submit-btn:hover {
+  background-color: var(--vz-purple-dark);
+  border: 1px solid var(--vz-purple-dark);
+}

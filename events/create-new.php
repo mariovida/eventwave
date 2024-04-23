@@ -131,17 +131,17 @@ if ($dbc && isset($_POST['create-event'])) {
                             <div class="form-row mb-4">
                                 <div>
                                     <input type="radio" id="free" name="ticket_type" value="free" required>
-                                    <label for="public">Free ticket</label>
+                                    <label for="free">Free ticket</label>
                                 </div>
                                 <div>
                                     <input type="radio" id="paid" name="ticket_type" value="paid" required>
-                                    <label for="private">Paid ticket</label>
+                                    <label for="paid">Paid ticket</label>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer justify-content-start">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn btn-primary">Add ticket</button>
+                            <button type="button" class="discard-btn" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="submit-btn">Add ticket</button>
                         </div>
                         </div>
                     </div>
