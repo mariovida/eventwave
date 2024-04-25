@@ -1,7 +1,11 @@
-/*.add-ticket-modal .modal-header,
+.add-ticket-modal .modal-header,
 .add-ticket-modal .modal-footer {
   border: 0;
-}*/
+}
+.add-ticket-modal .radio-div,
+.add-ticket-modal .radio-div label {
+  cursor: pointer;
+}
 .add-ticket-modal .discard-btn,
 .add-ticket-modal .submit-btn {
   display: inline-flex;

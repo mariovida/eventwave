@@ -124,16 +124,16 @@ if ($dbc && isset($_POST['create-event'])) {
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content add-ticket-modal">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="addTicketModalLabel">Add ticket</h5>
+                            <h4 class="modal-title" id="addTicketModalLabel">Add ticket</h4>
                         </div>
                         <div class="modal-body">
                             <h5 style="font-size:16px;font-weight:500;margin-bottom:16px">Ticket type</h5>
                             <div class="form-row mb-4">
-                                <div>
+                                <div class="radio-div">
                                     <input type="radio" id="free" name="ticket_type" value="free" required>
                                     <label for="free">Free ticket</label>
                                 </div>
-                                <div>
+                                <div class="radio-div">
                                     <input type="radio" id="paid" name="ticket_type" value="paid" required>
                                     <label for="paid">Paid ticket</label>
                                 </div>
@@ -148,7 +148,7 @@ if ($dbc && isset($_POST['create-event'])) {
                 </div>
 
                 <div class="d-flex align-items-center justify-content-end gap-4">
-                    <a href="./" class="discard-btn">Discard</a>
+                    <a href="./" class="discard-btn">Discard event</a>
                     <input type="submit" value="Create event" name="create-event">
                 </div>
             </form>

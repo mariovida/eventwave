@@ -67,6 +67,14 @@ h3 {
   color: var(--vz-gray-900);
   margin-bottom: 0;
 }
+h4 {
+  font-family: ff-secondary;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 30px !important;
+  color: var(--vz-gray-900);
+  margin-bottom: 0;
+}
 h5 {
   font-family: ff-secondary;
   font-size: 18px;
