@@ -1,18 +1,15 @@
-.add-ticket-modal .modal-header,
-.add-ticket-modal .modal-footer {
+.modal-header,
+.modal-footer {
   border: 0;
 }
-.add-ticket-modal .radio-div,
-.add-ticket-modal .radio-div label {
-  cursor: pointer;
-}
-.add-ticket-modal .discard-btn,
-.add-ticket-modal .submit-btn {
+.modal-footer .discard-btn,
+.modal-footer .submit-btn {
   display: inline-flex;
   font-size: 15px;
   font-weight: 600;
   line-height: 40px;
   letter-spacing: 0.5px;
+  text-decoration: none;
   padding: 0 24px;
   color: var(--vz-gray-700);
   background-color: transparent;
@@ -20,13 +17,50 @@
   border-radius: 5px;
   transition: 0.2s;
 }
-.add-ticket-modal .submit-btn {
+.modal-footer .submit-btn {
   margin-left: 12px;
   color: var(--vz-white);
   background-color: var(--vz-purple);
   border: 1px solid var(--vz-purple);
 }
-.add-ticket-modal .submit-btn:hover {
+.modal-footer .discard-btn:hover {
+  background-color: var(--vz-gray-200);
+}
+.modal-footer .submit-btn:hover {
   background-color: var(--vz-purple-dark);
   border: 1px solid var(--vz-purple-dark);
+}
+
+/* ADD TICKET MODAL */
+.add-ticket-modal .radio-div,
+.add-ticket-modal .radio-div label {
+  cursor: pointer;
+}
+
+/* DISCARD MODAL */
+.discard-modal .modal-body {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 24px;
+  padding-bottom: 8px;
+}
+.discard-modal .modal-body div:first-child,
+.discard-modal .modal-body div:first-child svg {
+  width: 50px;
+}
+.discard-modal .modal-body div:nth-child(2) h4 {
+  margin-bottom: 8px;
+}
+.discard-modal .modal-body div:nth-child(2) p {
+  margin: 0;
+}
+.discard-modal .modal-footer a {
+  background-color: var(--vz-warning);
+  border-color: var(--vz-warning);
+  transition: 0.2s;
+}
+.discard-modal .modal-footer a:hover {
+  background-color: var(--vz-warning-dark);
+  border-color: var(--vz-warning-dark);
 }

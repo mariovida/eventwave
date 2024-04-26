@@ -30,6 +30,8 @@
             if ($isVerified == 1) {
                 $login_success = true;
                 $_SESSION['name'] = $userName;
+                //$_SESSION['last_activity'] = time();
+                //$_SESSION['expire_time'] = 5; // 60 = 1 minute
                 header('Location: ./');
             } else {
                 $login_success = false;

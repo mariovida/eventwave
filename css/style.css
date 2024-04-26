@@ -132,7 +132,10 @@ a.btn-1 {
   background-color: var(--vz-purple-dark);
 }
 .discard-btn {
+  font-weight: 500;
+  background-color: transparent;
   color: var(--vz-red);
+  border: 0;
 }
 .btn-2 {
   display: inline-flex;

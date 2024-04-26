@@ -147,9 +147,29 @@ if ($dbc && isset($_POST['create-event'])) {
                     </div>
                 </div>
 
-                <div class="d-flex align-items-center justify-content-end gap-4">
-                    <a href="./" class="discard-btn">Discard event</a>
+                <div class="d-flex align-items-center justify-content-end gap-4 mt-4">
+                    <button type="button" class="discard-btn" data-bs-toggle="modal" data-bs-target="#discardModal">Discard event</button>
                     <input type="submit" value="Create event" name="create-event">
+                </div>
+                <!-- Discard event modal -->
+                <div class="modal fade" id="discardModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="discardModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content discard-modal">
+                        <div class="modal-body">
+                            <div>
+                                <?php include '../assets/icons/warning.svg'; ?>
+                            </div>
+                            <div>
+                                <h4>Discard event</h4>
+                                <p>Are you sure you want to discard creating a new event?</p>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="discard-btn" data-bs-dismiss="modal">Cancel</button>
+                            <a href="./" type="button" class="submit-btn">Discard</a>
+                        </div>
+                        </div>
+                    </div>
                 </div>
             </form>
         </div>

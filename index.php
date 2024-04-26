@@ -1,5 +1,7 @@
 <?php
     session_start();
+    //include './inc/check-activity.php';
+
     require_once 'vendor/autoload.php';
     require_once 'config.php';
     if(!isset($_SESSION['name'])) {
@@ -47,6 +49,20 @@
     </div>
 
     <script>
+        let idleTime = 0;
+        function resetIdleTime() {
+            idleTime = 0;
+        }
+        setInterval(() => {
+            idleTime++;
+            if (idleTime >= 5) {
+                window.location.href = './logout.php';
+            }
+        }, 60000); // 1000 milliseconds = 1 second
+        window.onload = resetIdleTime;
+        window.onmousemove = resetIdleTime;
+        window.onkeypress = resetIdleTime;
+
         unlayer.init({
             id: 'editor',
             projectId: 231851,
