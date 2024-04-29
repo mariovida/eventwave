@@ -92,6 +92,7 @@ if ($dbc && isset($_POST['create-event'])) {
                 <div class="form-row">
                     <input type="text" name="event_organizer" placeholder="Organizer" required>
                     <select name="event_timezone" id="event_timezone" required>
+                        <option value="" selected disabled>Timezone</option>
                         <?php
                         $timezones = timezone_identifiers_list();
                         foreach($timezones as $timezone) {
@@ -108,11 +109,13 @@ if ($dbc && isset($_POST['create-event'])) {
                 <h5 class="mt-5">Registration and attendance information</h5>
                 <div class="form-row">
                     <input type="text" name="event_location" placeholder="Location name" required>
-                    <input type="text" name="event_address" placeholder="Address" required>
+                    <input type="text" name="event_address" placeholder="Address">
                 </div>
                 <div class="form-row">
                     <input type="text" name="event_city" placeholder="City" required>
-                    <input type="text" name="event_country" placeholder="Country" required>
+                    <select name="event_country" id="event_country" required>
+                        <option value="" selected disabled>Country</option>
+                    </select>
                 </div>
 
                 <h5 class="mt-5">Tickets</h5>
@@ -188,6 +191,19 @@ if ($dbc && isset($_POST['create-event'])) {
         endDateTimeInput.addEventListener('change', function() {
             startDateTimeInput.max = endDateTimeInput.value;
         });
+
+        fetch('../lists/countries.json')
+        .then(response => response.json())
+        .then(data => {
+            const countrySelect = document.getElementById('event_country');
+            data.forEach(country => {
+                const option = document.createElement('option');
+                option.value = country.code;
+                option.textContent = country.name;
+                countrySelect.appendChild(option);
+            });
+        })
+        .catch(error => console.error('Error fetching country data:', error));
 
         FilePond.registerPlugin(
             FilePondPluginFileEncode,

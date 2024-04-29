@@ -4,3 +4,14 @@
 .filepond--drop-label {
   height: 100% !important;
 }
+.filepond .filepond--list-scroller {
+  margin: 0 !important;
+  mask: unset !important;
+  overflow-y: hidden !important;
+}
+.filepond .filepond--list-scroller .filepond--list {
+  left: 0 !important;
+}
+.filepond .filepond--list-scroller .filepond--list .filepond--item {
+  margin: 0 !important;
+}
