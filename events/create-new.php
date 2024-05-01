@@ -63,6 +63,9 @@ if ($dbc && isset($_POST['create-event'])) {
             <form id="event-form" action="" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="event_image" class="event-image">
                 <input type="file" class="filepond event-header-image" name="filepond">
+                <div id="uploaded-image-container">
+                    <img id="uploaded-image" src="" alt="Uploaded Image" />
+                </div>
                 <h5>Event information</h5>
 
                 <h5 style="font-size:16px;font-weight:500;margin-bottom:16px">Event type</h5>
@@ -209,7 +212,6 @@ if ($dbc && isset($_POST['create-event'])) {
             FilePondPluginFileEncode,
             FilePondPluginFileValidateSize,
             FilePondPluginImageExifOrientation,
-            FilePondPluginImagePreview,
             FilePondPluginFileValidateType
         );
         const pond = FilePond.create(document.querySelector('input.filepond'), {
@@ -218,10 +220,19 @@ if ($dbc && isset($_POST['create-event'])) {
                     url: './helpers/upload.php',
                     onload: (response) => {
                         const res = JSON.parse(response);
-                        document.querySelector('input.event-image').value = res.key;
+                        if (res.status === 'success') {
+                            const uploadedImageUrl = res.url;
+                            document.querySelector('input.event-image').value = uploadedImageUrl;
+                            //document.querySelector('.event-header-image').style.display = 'none';
+                            document.getElementById('uploaded-image').src = '../uploads/' + uploadedImageUrl;
+                            document.getElementById('uploaded-image-container').style.display = 'block';
+                        } else {
+                            console.error('Upload failed:', res.message);
+                        }
                     }
                 }
             },
+            instantUpload: true,
             maxFiles: 1,
             maxFileSize: '1MB',
             imageCropAspectRatio: '1:1',
@@ -246,6 +257,9 @@ if ($dbc && isset($_POST['create-event'])) {
             labelButtonUndoItemProcessing: 'Undo',
             labelButtonRetryItemProcessing: 'Retry',
             labelButtonProcessItem: 'Upload'
+        });
+        pond.on('addfile', () => {
+            document.querySelector('.event-header-image').style.display = 'none';
         });
     });
 </script>

@@ -6,5 +6,6 @@
 /vendor
 /.htaccess
 /inc/check-activity.php
+/uploads
 send-mail.php
 404.php

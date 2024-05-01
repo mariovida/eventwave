@@ -1,7 +1,19 @@
 .event-header-image {
-  height: 160px;
+  height: 180px;
   margin-bottom: 32px !important;
   cursor: pointer;
+}
+#uploaded-image-container {
+  display: none;
+  height: 180px;
+  margin-bottom: 32px;
+  border-radius: 10px;
+}
+#uploaded-image-container img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
 }
 .events-create-new .form-row {
   width: 100%;

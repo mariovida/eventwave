@@ -22,7 +22,8 @@
             // Move the uploaded file to the target directory
             if (move_uploaded_file($file['tmp_name'], $uploadFilePath)) {
                 // Return the file path or some identifier
-                echo json_encode(['key' => $fileName]);
+                // echo json_encode(['key' => $fileName]);
+                echo json_encode(['status' => 'success', 'url' => $fileName]);
             } else {
                 // Return an error response
                 http_response_code(500);
