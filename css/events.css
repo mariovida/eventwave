@@ -35,6 +35,9 @@
   border-radius: 5px;
   cursor: pointer;
 }
+.events-create-new .form-row textarea {
+  min-height: 80px;
+}
 .events-create-new .form-row input:focus,
 .events-create-new .form-row textarea:focus,
 .events-create-new .form-row select:focus {
