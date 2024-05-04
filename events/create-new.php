@@ -8,16 +8,27 @@ if(!isset($_SESSION['name'])) {
 
 include '../db_connect/connect.php';
 if ($dbc && isset($_POST['create-event'])) {
+    $eventType = $_POST['event_type'];
     $eventName = $_POST['event_name'];
+    $eventCategory = $_POST['event_category'];
     $eventDescription = $_POST['event_description'];
+    $eventOrganizer = $_POST['event_organizer'];
+    $eventTimezone = $_POST['event_timezone'];
+    $eventStart = $_POST['start_date'];
+    $eventEnd = $_POST['end_date'];
+    $eventLocation = $_POST['event_location'];
+    $eventAddress = $_POST['event_address'];
+    $eventCity = $_POST['event_city'];
+    $eventCountry = $_POST['event_country'];
     $date = date("Y-m-d H:i:s");
     $eventImage = $_POST['event_image'];
 
-    $sql = "INSERT INTO events (name, description, header_image, date_created) VALUES (?, ?, ?, ?)";
+    $sql = "INSERT INTO events (name, description, type, category, organizer, timezone, start_date, end_date, location, address, city, country, header_image, date_created) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = mysqli_stmt_init($dbc);
     if (mysqli_stmt_prepare($stmt, $sql)) {
-        mysqli_stmt_bind_param($stmt, 'ssss', $eventName, $eventDescription, $eventImage, $date);
+        mysqli_stmt_bind_param($stmt, 'ssssssssssssss', $eventName, $eventDescription, $eventType, $eventCategory, $eventOrganizer, $eventTimezone, $eventStart, $eventEnd, $eventLocation, $eventAddress, $eventCity, $eventCountry, $eventImage, $date);
         if (mysqli_stmt_execute($stmt)) {
+            echo 'Data saved!';
             header('Location: ./');
             exit;
         } else {
@@ -94,7 +105,7 @@ if ($dbc && isset($_POST['create-event'])) {
                 </div>
                 <div class="form-row">
                     <input type="text" name="event_organizer" placeholder="Organizer" required>
-                    <select name="event_timezone" id="event_timezone" required>
+                    <select name="event_timezone" id="event_timezone">
                         <option value="" selected disabled>Timezone</option>
                         <?php
                         $timezones = timezone_identifiers_list();
@@ -136,11 +147,11 @@ if ($dbc && isset($_POST['create-event'])) {
                             <h5 style="font-size:16px;font-weight:500;margin-bottom:16px">Ticket type</h5>
                             <div class="form-row mb-4">
                                 <div class="radio-div">
-                                    <input type="radio" id="free" name="ticket_type" value="free" required>
+                                    <input type="radio" id="free" name="ticket_type" value="free">
                                     <label for="free">Free ticket</label>
                                 </div>
                                 <div class="radio-div">
-                                    <input type="radio" id="paid" name="ticket_type" value="paid" required>
+                                    <input type="radio" id="paid" name="ticket_type" value="paid">
                                     <label for="paid">Paid ticket</label>
                                 </div>
                             </div>
