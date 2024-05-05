@@ -17,19 +17,20 @@
     if ($dbc && isset($_POST['login'])) {
         $user = $_POST['email'];
         $pass = $_POST['password'];
-        $sql = "SELECT first_name, password, is_verified FROM users WHERE email = ?";
+        $sql = "SELECT id, first_name, password, is_verified FROM users WHERE email = ?";
         $stmt = mysqli_stmt_init($dbc);
         if (mysqli_stmt_prepare($stmt, $sql)) {
             mysqli_stmt_bind_param($stmt, 's', $user);
             mysqli_stmt_execute($stmt);
             mysqli_stmt_store_result($stmt);
         }
-        mysqli_stmt_bind_result($stmt, $userName, $userPass, $isVerified);
+        mysqli_stmt_bind_result($stmt, $userId, $userName, $userPass, $isVerified);
         mysqli_stmt_fetch($stmt);
         if (password_verify($_POST['password'], $userPass) && mysqli_stmt_num_rows($stmt) > 0) {
             if ($isVerified == 1) {
                 $login_success = true;
                 $_SESSION['name'] = $userName;
+                $_SESSION['userToken'] = $userId;
                 //$_SESSION['last_activity'] = time();
                 //$_SESSION['expire_time'] = 5; // 60 = 1 minute
                 header('Location: ./');

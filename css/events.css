@@ -1,3 +1,57 @@
+/* ALL EVENTS */
+.events-list .row > div {
+  margin-bottom: 28px;
+}
+.events-list .event-item {
+  min-height: 200px;
+  height: 100%;
+  padding: 24px;
+  /*margin-bottom: 32px;*/
+  border-radius: 12px;
+  box-shadow: 0 5px 22px 0 rgba(0, 0, 0, 0.04), 0 0 0 0.5px rgba(0, 0, 0, 0.03);
+  cursor: default;
+  outline: 2px solid var(--vz-white);
+  transition: 0.2s;
+}
+.events-list .event-item:hover {
+  outline-color: var(--vz-purple);
+}
+.events-list .event-item h5 {
+  width: 90%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.events-list .event-item_block {
+  margin-bottom: 16px;
+}
+.events-list .event-item_block:last-of-type {
+  margin: 0;
+}
+.events-list .event-item_block span {
+  font-size: 14px;
+  color: var(--vz-gray-600);
+}
+.events-list .event-item_block p {
+  font-size: 14px;
+  margin: 0;
+}
+.events-list .event-item_block .status-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
+  line-height: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-top: 5px;
+  padding: 7px 12px;
+  background-color: var(--vz-warning-bg);
+  border-radius: 12px;
+  cursor: default;
+}
+
+/* CREATING NEW EVENT */
 .event-header-image {
   height: 180px;
   margin-bottom: 32px !important;

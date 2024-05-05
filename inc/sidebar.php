@@ -9,15 +9,15 @@
         <p>EventWave</p>
     </div>
     <div class="nav-links d-flex flex-column">
-        <a href="<?php echo $pageUrl; ?>"><img src="<?php echo $pageUrl; ?>/assets/icons/home2.svg" />Home</a>
-        <button type="button" data-bs-toggle="collapse" data-bs-target="#collapseContacts" aria-expanded="false" aria-controls="collapseContacts"><img src="<?php echo $pageUrl; ?>/assets/icons/contacts.svg" />Contacts<img class="chevron" src="<?php echo $pageUrl; ?>/assets/icons/chevron-right.svg" /></button>
+        <a href="<?php echo $pageUrl; ?>"><img src="<?php echo $pageUrl; ?>/assets/icons/home.svg" />Home</a>
+        <button type="button" data-bs-toggle="collapse" data-bs-target="#collapseContacts" aria-expanded="false" aria-controls="collapseContacts"><img src="<?php echo $pageUrl; ?>/assets/icons/users.svg" />Contacts<img class="chevron" src="<?php echo $pageUrl; ?>/assets/icons/chevron-right.svg" /></button>
         <div class="collapse" id="collapseContacts">
             <div class="card card-body">
                 <a href="<?php echo $pageUrl; ?>/contacts">View all</a>
                 <a href="<?php echo $pageUrl; ?>/contacts/create-new">Create new</a>
             </div>
         </div>
-        <button type="button" data-bs-toggle="collapse" data-bs-target="#collapseEvents" aria-expanded="false" aria-controls="collapseEvents"><img src="<?php echo $pageUrl; ?>/assets/icons/events.svg" />Events<img class="chevron" src="<?php echo $pageUrl; ?>/assets/icons/chevron-right.svg" /></button>
+        <button type="button" data-bs-toggle="collapse" data-bs-target="#collapseEvents" aria-expanded="false" aria-controls="collapseEvents"><img src="<?php echo $pageUrl; ?>/assets/icons/calendar.svg" />Events<img class="chevron" src="<?php echo $pageUrl; ?>/assets/icons/chevron-right.svg" /></button>
         <div class="collapse" id="collapseEvents">
             <div class="card card-body">
                 <a href="<?php echo $pageUrl; ?>/events">View all</a>
