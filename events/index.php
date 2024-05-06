@@ -47,6 +47,14 @@
 
                                 <div class="col-4">
                                     <div class="event-item">
+                                        <button type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <img src="../assets/icons/more-menu.svg" />
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+                                            <li><a class="dropdown-item" href="#">Action</a></li>
+                                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                        </ul>
                                         <h5><?php echo $eventName; ?></h5>
                                         <div class="event-item_block">
                                             <span>Start and end date</span>

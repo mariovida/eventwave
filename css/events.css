@@ -3,6 +3,7 @@
   margin-bottom: 28px;
 }
 .events-list .event-item {
+  position: relative;
   min-height: 200px;
   height: 100%;
   padding: 24px;
@@ -16,11 +17,44 @@
 .events-list .event-item:hover {
   outline-color: var(--vz-purple);
 }
+.events-list .event-item button {
+  display: inline-flex;
+  position: absolute;
+  right: 24px;
+  top: 26px;
+  width: 18px;
+  height: 18px;
+  background-color: transparent;
+  border: 0;
+}
+.events-list .event-item button img {
+  object-fit: contain;
+  width: 18px;
+  height: 18px;
+}
+.events-list .event-item .dropdown-menu {
+  top: 4px !important;
+  padding: 8px;
+}
+.events-list .event-item .dropdown-menu li {
+  margin-bottom: 4px;
+}
+.events-list .event-item .dropdown-menu li:last-of-type {
+  margin: 0;
+}
+.events-list .event-item .dropdown-menu li a {
+  font-size: 14px;
+  padding: 4px 15px 4px 10px;
+  border-radius: 4px;
+}
+.events-list .event-item .dropdown-menu li a:hover {
+  background-color: var(--vz-gray-100);
+}
 .events-list .event-item h5 {
-  width: 90%;
-  text-overflow: ellipsis;
+  width: 80%;
+  /*text-overflow: ellipsis;
   white-space: nowrap;
-  overflow: hidden;
+  overflow: hidden;*/
 }
 .events-list .event-item_block {
   margin-bottom: 16px;
