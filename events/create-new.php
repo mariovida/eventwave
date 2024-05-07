@@ -22,11 +22,13 @@ if ($dbc && isset($_POST['create-event'])) {
     $eventCountry = $_POST['event_country'];
     $date = date("Y-m-d H:i:s");
     $eventImage = $_POST['event_image'];
+    $randomBytes = random_bytes(16);
+    $randomString = bin2hex($randomBytes);
 
-    $sql = "INSERT INTO events (name, description, type, category, organizer, timezone, start_date, end_date, location, address, city, country, header_image, date_created, created_by) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO events (event_id, name, description, type, category, organizer, timezone, start_date, end_date, location, address, city, country, header_image, date_created, created_by) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = mysqli_stmt_init($dbc);
     if (mysqli_stmt_prepare($stmt, $sql)) {
-        mysqli_stmt_bind_param($stmt, 'sssssssssssssss', $eventName, $eventDescription, $eventType, $eventCategory, $eventOrganizer, $eventTimezone, $eventStart, $eventEnd, $eventLocation, $eventAddress, $eventCity, $eventCountry, $eventImage, $date, $_SESSION['userToken']);
+        mysqli_stmt_bind_param($stmt, 'ssssssssssssssss', $randomString, $eventName, $eventDescription, $eventType, $eventCategory, $eventOrganizer, $eventTimezone, $eventStart, $eventEnd, $eventLocation, $eventAddress, $eventCity, $eventCountry, $eventImage, $date, $_SESSION['userToken']);
         if (mysqli_stmt_execute($stmt)) {
             echo 'Data saved!';
             header('Location: ./');

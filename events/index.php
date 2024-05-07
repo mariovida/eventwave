@@ -28,12 +28,13 @@
                 <div class="row">
                     <?php
                         $createdBy = $_SESSION['userToken'];
-                        $queryEvents = "SELECT * FROM events WHERE created_by = '$createdBy'";
+                        $queryEvents = "SELECT * FROM events WHERE created_by = '$createdBy' ORDER BY id DESC";
                         $result = mysqli_query($dbc,$queryEvents) or die('Error querying database.');
                         $eventsCounter = 0;
                         if($result) {
                             while($row = mysqli_fetch_array($result)) {
                                 $eventsCounter++;
+                                $eventId = $row['event_id'];
                                 $eventName = $row['name'];
                                 $eventStart = $row['start_date'];
                                 $eventStart = new DateTime($eventStart);
@@ -51,9 +52,7 @@
                                             <img src="../assets/icons/more-menu.svg" />
                                         </button>
                                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
-                                            <li><a class="dropdown-item" href="#">Action</a></li>
-                                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                            <li><a class="dropdown-item" href="./event-statistics?eid=<?php echo $eventId; ?>">Event statistics</a></li>
                                         </ul>
                                         <h5><?php echo $eventName; ?></h5>
                                         <div class="event-item_block">

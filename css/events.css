@@ -146,3 +146,24 @@
 .events-create-new #event-form input[type="submit"]:hover {
   background-color: var(--vz-purple-dark);
 }
+
+/* EVENT STATISTICS */
+.events-statistics .header-image {
+  height: 220px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+.events-statistics .header-image img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.events-statistics .header p {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--vz-gray-600);
+  margin-bottom: 4px;
+}
