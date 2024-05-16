@@ -1,0 +1,108 @@
+.auth-screen {
+  position: relative;
+  min-height: 100vh;
+  height: 100%;
+  background-image: url("../assets/images/login-bg.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.auth-screen .row {
+  min-height: 100vh;
+  height: 100%;
+  margin: 0;
+}
+.auth-screen .form-box {
+  max-width: 520px;
+  width: 100%;
+  padding: 40px;
+  background-color: var(--vz-white);
+  border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.auth-screen .form-box h2 {
+  margin-bottom: 12px;
+}
+.auth-screen .form-box p {
+  color: var(--vz-gray-600);
+}
+.auth-screen .form-box a {
+  display: inline-block;
+  color: var(--vz-gray-600);
+  text-decoration: none;
+}
+.auth-screen .form-box a.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 18px;
+  font-size: 16px;
+  color: var(--vz-purple);
+  text-decoration: none;
+  margin-bottom: 24px;
+}
+.auth-screen .form-box a.back-button svg {
+  width: 16px;
+  height: 16px;
+}
+.auth-screen .form-box form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+}
+.auth-screen .form-box form label {
+  font-size: 15px;
+  line-height: 14px;
+  margin-bottom: 8px;
+}
+.auth-screen .form-box form input {
+  font-size: 15px;
+  line-height: 16px;
+  padding: 14px 12px;
+  margin-bottom: 20px;
+  border: 1px solid var(--vz-gray-400);
+  border-radius: 5px;
+}
+.auth-screen .form-box form input[type="submit"] {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: 0.5px;
+  padding: 14px;
+  margin-bottom: 0;
+  color: var(--vz-white);
+  background-color: var(--vz-purple);
+  border: 0;
+  transition: 0.2s;
+}
+.auth-screen .form-box form input[type="submit"]:hover {
+  background-color: var(--vz-purple-dark);
+}
+.auth-screen .form-box form input:focus {
+  outline: 0;
+}
+.auth-screen .form-box form .form-row {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+.auth-screen .form-box form .form-row input {
+  width: 100%;
+}
+.auth-screen .form-box .verification-error {
+  font-size: 15px;
+  padding: 16px;
+  color: #ff4d4d;
+  background-color: #ffcccc;
+  border: 1px solid #ffb3b3;
+  border-radius: 5px;
+}
+@media screen and (max-width: 768px) {
+  .auth-screen .row > div:nth-child(1) {
+    display: none;
+  }
+  .auth-screen .row > div:nth-child(2) {
+    height: 100%;
+    margin-top: 60px;
+  }
+}
